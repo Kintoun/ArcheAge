@@ -2,8 +2,8 @@
 ;;;;;;;;;; Globals ;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-ProcessName := "notepad.exe"
-;ProcessName := "archeage.exe"
+;ProcessName := "notepad.exe"
+ProcessName := "archeage.exe"
 KeepRunning := true
 
 class GatherAction
@@ -18,7 +18,7 @@ class GatherAction
 	}
 }
 
-CommonGatherSpeed := 6000
+CommonGatherSpeed := 5000
 
 GatherData := {}
 GatherData["Gather Line Fast"] := new GatherAction(1, CommonGatherSpeed)
@@ -85,14 +85,18 @@ Gather(GatherDropDownChoice)
 		if (not KeepRunning)
 			break
 
-		SendToGame("{PgUp}", 250)
+		SendToGame("{PgUp}", 90)
 		SendToGame("{PgUp}")
+        Sleep 500
 
 		Loop %GathersPerMove%
 		{
 			if (not KeepRunning)
 				break
 
+            SendToGame("g", 100)
+            SendToGame("g", 100)
+            SendToGame("g", 100)
 			SendToGame("g", GatherActionInstance.gatheringTime)
 		}
 	}
